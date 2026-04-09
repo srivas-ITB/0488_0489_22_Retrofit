@@ -40,22 +40,22 @@ import com.example.app22_Retrofit.data.SWCharacter
 
 
 @Composable
-fun SWCharacterListScreen(navigateToDetail: (String) -> Unit) {
+fun SWCharacterListScreen(navigateToDetail: (Int) -> Unit) {
     val vm: CharacterListViewModel = viewModel()
     val characters by vm.characters.collectAsStateWithLifecycle()
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(characters) { character ->
-            CharacterItem_Advanced(character = character, { navigateToDetail(character.url) })
+            CharacterItem_Advanced(character = character, { navigateToDetail(3) })
         }
     }
 }
 
 @Composable
-fun CharacterItem_Basic(character: SWCharacter, navigateToDetail: (String) -> Unit) {
+fun CharacterItem_Basic(character: SWCharacter, navigateToDetail: () -> Unit) {
     Card(
         border = BorderStroke(2.dp, Color.LightGray),
         modifier = Modifier.fillMaxWidth()
-            .clickable { navigateToDetail(character.url) }) {
+            .clickable { navigateToDetail() }) {
         Column {
             Text(character.name, fontSize = 28.sp, fontWeight = FontWeight.Bold)
             Text(text = "HomeWorld: ${character.homeworld}")
@@ -69,14 +69,14 @@ fun CharacterItem_Basic(character: SWCharacter, navigateToDetail: (String) -> Un
 @Composable
 fun CharacterItem_Advanced(
     character: SWCharacter,
-    navigateToDetail: (String) -> Unit
+    navigateToDetail: () -> Unit
 ) {
     Card(
         // Cambiamos a ElevatedCard para darle profundidad automática
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clickable { navigateToDetail(character.url) },
+            .clickable { navigateToDetail() },
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.elevatedCardColors(
             containerColor = MaterialTheme.colorScheme.surface

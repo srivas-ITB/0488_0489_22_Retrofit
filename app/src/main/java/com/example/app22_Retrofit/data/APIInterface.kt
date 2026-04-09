@@ -6,14 +6,19 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Url
 
 interface ApiInterface {
     @GET("people/")
     suspend fun getData(): Response<ListData>
+//
+    @GET(value="people/{id}")
+    suspend fun getCharacterById(@Path("id") id: Int): Response<SWCharacter>
+//
+//    @GET()
+//    suspend fun getCharacterByURL(@Url url: String): Response<SWCharacter>
 
-    @GET()
-    suspend fun getData(@Url url: String): Response<ListData>
 
     companion object {
         const val BASE_URL = "https://swapi.dev/api/"

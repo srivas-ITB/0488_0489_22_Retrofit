@@ -12,26 +12,36 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharacterListViewModel: ViewModel() {
+class CharacterDetailViewModel: ViewModel() {
     private val repository = Repository()
-    private val _characters = MutableStateFlow<List<SWCharacter>>(emptyList())
-    val characters: StateFlow<List<SWCharacter>> = _characters.asStateFlow()
+    private val _character = MutableStateFlow<SWCharacter?>(null)
+    val character: StateFlow<SWCharacter?> = _character.asStateFlow()
 
-    init {
-        getCharacters_simplePage()
-    }
 
-    fun getCharacters_simplePage() {
+    fun getCharacterById(idCharacter:Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = repository.getAllCharacters()
+            val response = repository.getCharacterById(idCharacter)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    _characters.value = response.body()?.results!!
+                    _character.value = response.body()
                 } else {
                     Log.e("Error :", response.message())
                 }
             }
         }
     }
+//
+//    fun getCharacterByURL(url:String) {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            val response = repository.getCharacterByUrl(url)
+//            withContext(Dispatchers.Main) {
+//                if (response.isSuccessful) {
+//                    _character.value = response.body()
+//                } else {
+//                    Log.e("Error :", response.message())
+//                }
+//            }
+//        }
+//    }
 }
 

@@ -8,5 +8,5 @@ sealed class Route: NavKey {
     data object CharacterListScreen: Route()
 
     @Serializable
-    data class CharacterDetailScreen(val id: String): Route()
+    data class CharacterDetailScreen(val id: Int): Route()
 }
