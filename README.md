@@ -1,6 +1,6 @@
 # App 22 Retrofit
 
-- Segueix l'exemple de la presentació i amplia el contingut
+- Segueix l'exemple de la presentació accedint a l'API d'StarWars i amplia el contingut
 - Inclou la navegació i els viewModels
 - Inclou la pantalla de detalls
 - Afegida una versió per recuperar el personatge mitjançant l'id o bé la url
