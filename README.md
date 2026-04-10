@@ -20,7 +20,9 @@
 >      
 > En la creació del viewModel `CharacterDetailViewModel` es decideix quin dels dos es fa servir.
 > En realitat no cal fer servir tots dos sinó només un dels dos, però s'han implementat les dues formes per motius experimentals.
-'''Kotlin
+
+'''java
+
 @Composable
 fun SWCharacterDetailScreen(id: Int, url:String, navigateBack: () -> Unit) {
     val vm: CharacterDetailViewModel = viewModel()
@@ -33,6 +35,6 @@ fun SWCharacterDetailScreen(id: Int, url:String, navigateBack: () -> Unit) {
 
     //ShowDetail_Basic (character, navigateBack )   <--  COMENTAR / DESCOMENTAR AQUESTES LÍNIES PER CANVIAR LA UI
     ShowDetail_Advanced (character, navigateBack )
-
 }
+
 '''
