@@ -26,12 +26,10 @@
 fun SWCharacterDetailScreen(id: Int, url:String, navigateBack: () -> Unit) {
     val vm: CharacterDetailViewModel = viewModel()
     val character by vm.character.collectAsStateWithLifecycle()
-
     LaunchedEffect(Unit) {
         //vm.getCharacterById(id)      <--  COMENTAR / DESCOMENTAR AQUESTES LÍNIES PER ACCEDIR PER ID o URL
         vm.getCharacterByUrl(url)
     }
-
     //ShowDetail_Basic (character, navigateBack )   <--  COMENTAR / DESCOMENTAR AQUESTES LÍNIES PER CANVIAR LA UI
     ShowDetail_Advanced (character, navigateBack )
 }
