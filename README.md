@@ -17,6 +17,7 @@
 > EXPERIMENT: La pantalla `SWCharacterDetailScreen` rep dos paràmetres:
 >    - id : Int  --> identificador del personatge
 >    - url: String --> URL per obtenir la informació del personatge
+>      
 > En la creació del viewModel `CharacterDetailViewModel` es decideix quin dels dos es fa servir.
 > En realitat no cal fer servir tots dos sinó només un dels dos, però s'han implementat les dues formes per motius experimentals.
 > 
