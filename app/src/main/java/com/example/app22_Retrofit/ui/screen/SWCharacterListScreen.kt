@@ -40,12 +40,15 @@ import com.example.app22_Retrofit.data.SWCharacter
 
 
 @Composable
-fun SWCharacterListScreen(navigateToDetail: (Int) -> Unit) {
+fun SWCharacterListScreen(navigateToDetail: (Int,String) -> Unit) {
     val vm: CharacterListViewModel = viewModel()
     val characters by vm.characters.collectAsStateWithLifecycle()
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(characters) { character ->
-            CharacterItem_Advanced(character = character, { navigateToDetail(3) })
+            //Extreu l'Id de la ruta  (penultima part si separem per / )
+            var parts= character.url.split("/")
+            val id = Integer.parseInt(parts.get(parts.lastIndex-1))
+            CharacterItem_Advanced(character = character, { navigateToDetail(id, character.url) })
         }
     }
 }

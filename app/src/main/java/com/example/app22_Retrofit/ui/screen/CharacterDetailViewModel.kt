@@ -30,18 +30,18 @@ class CharacterDetailViewModel: ViewModel() {
             }
         }
     }
-//
-//    fun getCharacterByURL(url:String) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val response = repository.getCharacterByUrl(url)
-//            withContext(Dispatchers.Main) {
-//                if (response.isSuccessful) {
-//                    _character.value = response.body()
-//                } else {
-//                    Log.e("Error :", response.message())
-//                }
-//            }
-//        }
-//    }
+
+    fun getCharacterByUrl(url:String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = repository.getCharacterByUrl(url)
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    _character.value = response.body()
+                } else {
+                    Log.e("Error :", response.message())
+                }
+            }
+        }
+    }
 }
 

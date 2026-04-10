@@ -12,12 +12,12 @@ import retrofit2.http.Url
 interface ApiInterface {
     @GET("people/")
     suspend fun getData(): Response<ListData>
-//
+
     @GET(value="people/{id}")
     suspend fun getCharacterById(@Path("id") id: Int): Response<SWCharacter>
-//
-//    @GET()
-//    suspend fun getCharacterByURL(@Url url: String): Response<SWCharacter>
+
+    @GET()
+    suspend fun getCharacterByURL(@Url url: String): Response<SWCharacter>
 
 
     companion object {

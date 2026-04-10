@@ -2,6 +2,8 @@ package com.example.app22_Retrofit.ui.navigation
 import SWCharacterDetailScreen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.core.graphics.component1
+import androidx.core.graphics.component2
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
@@ -15,10 +17,10 @@ fun NavigationWrapper_starwars(modifier: Modifier) {
         onBack = { backStack.removeLastOrNull() },
         entryProvider = entryProvider {
             entry<Route.CharacterListScreen> {
-                SWCharacterListScreen { id -> backStack.add(Route.CharacterDetailScreen(id)) }
+                SWCharacterListScreen { id, url -> backStack.add(Route.CharacterDetailScreen(id=id, url=url)) }
             }
-            entry<Route.CharacterDetailScreen> { key->
-                SWCharacterDetailScreen(key.id) {
+            entry<Route.CharacterDetailScreen> { key ->
+                SWCharacterDetailScreen(key.id, key.url) {
                     backStack.removeLastOrNull()
                 }
             }
