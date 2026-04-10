@@ -48,8 +48,10 @@ fun SWCharacterListScreen(navigateToDetail: (Int,String) -> Unit) {
             //Extreu l'Id de la ruta  (penultima part si separem per / )
             var parts= character.url.split("/")
             val id = Integer.parseInt(parts.get(parts.lastIndex-1))
+            //CharacterItem_Basic(character = character, { navigateToDetail(id, character.url) })
             CharacterItem_Advanced(character = character, { navigateToDetail(id, character.url) })
         }
+
     }
 }
 
